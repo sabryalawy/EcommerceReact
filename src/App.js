@@ -8,6 +8,7 @@ import Signin from "./componants/pages/signin";
 import {BrowserRouter,Route,Switch  } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import Detales from "./componants/pages/details";
+import DetailsOrder from "./componants/pages/detailsOrder";
 
 
 const App=()=>{
@@ -35,10 +36,11 @@ const App=()=>{
                 
                 <Route path='/products' component={()=><Product customer={customer}/>} />
                 <Route path='/warehouses' component={Warehouse} />
-                <Route path='/profile' component={Profile} />
+                <Route path='/profile' component={()=><Profile customer={customer} />} />
                 <Route path='/signin' component={()=><Signin changecustomer={setCustomerOnComponent}/>} />
                 <Route path='/logout' component={()=><Signin logout={true} changecustomer={setCustomerOnComponent} />}/>
-                <Route path='/details/' component={()=><Detales/>}/>
+                <Route path='/details/:id/:cid' component={Detales} />
+                <Route path='/detailsorder/:oid' component={ DetailsOrder } />
 
             </Switch>
         </BrowserRouter>

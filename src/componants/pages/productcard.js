@@ -12,7 +12,7 @@ const ProductCard=({product,customer})=>{
   });
 
   const getHLink=()=>{
-   return customer===null ? "/signin": "/details?pid="+product.id+"&pname="+product.name+"&pprice="+product.price+"&pbrand="+product.brand+"&cid="+customer.id;
+   return customer===null ? "/signin": "/details/"+product.id+"/"+customer.id;
   }
 
   if (warehouse===null) {
