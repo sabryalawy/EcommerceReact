@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Signin=(props)=>{
@@ -9,15 +9,27 @@ const Signin=(props)=>{
         props.changecustomer(null);
     }//jajajajaj-2
 
+
     const test=(e)=>{
     
-        var customer;
-        fetch("http://localhost:8080/customer/"+userName).then(rez=>rez.json()).then(rezz=>{
-            customer=rezz;
-            if (customer.password===password) {
-                props.changecustomer(customer)
-            }
-        });
+        if (userName==='admin'&&password==='admin') {
+            props.isAdmin(true);
+            props.changecustomer({
+                id:0,
+                userName:"admin",
+                lName:"admin",
+                fName:"admin",
+
+            });
+        }else{
+            var customer;
+            fetch("http://localhost:8080/customer/"+userName).then(rez=>rez.json()).then(rezz=>{
+                customer=rezz;
+                if (customer.password===password) {
+                    props.changecustomer(customer)
+                }
+            });
+        }
     }
     return (
         
@@ -28,7 +40,8 @@ const Signin=(props)=>{
             <input type="text" className="m-2" id="username" onChange={e=>setUserName(e.target.value)}/><br/>             
             <label>Password:</label>
             <input type="password" className="m-2" onChange={e=>setPassword(e.target.value)}/><br/> 
-            <Link to="/products"><button onClick={(e)=>test(e)}>Sign in</button></Link>
+            <Link to="/products"><button className='btn btn-primary' onClick={(e)=>test(e)}>Sign in</button></Link><br/>
+            <Link to='/signup' className='m-5'> Sign Up </Link>
             </div>
         </div>
     );

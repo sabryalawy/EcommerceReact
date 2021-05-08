@@ -4,27 +4,12 @@ import ax from "axios";
 
 
 const Product=({customer})=>{
+
     const [products,setProducts]=useState();
    
-    const getallProducts=async ()=>{
-        return await ax.get("http://localhost:8080/product").then((rez)=>(rez.data));
-    }
-   
-    useEffect(() => {
-        const abortCtrl = new AbortController();
-        const opts = { signal: abortCtrl.signal };
-      
-        fetch('http://localhost:8080/product', opts)
-          .then((response) => response.json())
-          .then((data) => 
-          {
-              setProducts(data)
-            return abortCtrl.abort();
-        })
-          .catch((error) => console.log(error.message));
-      
-        
-      }, []);
+    useEffect( () => {
+       fetch("http://localhost:8080/product").then((rez)=>(rez.json()).then(setProducts));
+    }, []);
 
 
     if (products === undefined) {
@@ -33,9 +18,7 @@ const Product=({customer})=>{
         return (
         <div>
             <h1 className="text-center">Products</h1>
-            {products.map((pro)=>{
-                    return <ProductCard key={pro.id} product={pro} customer={customer}/>
-                })
+            {products.map((pro)=> <ProductCard key={pro.id} product={pro} customer={customer}/>)
             }
 
         </div>);

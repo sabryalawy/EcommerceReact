@@ -9,7 +9,7 @@ const ProductCard=({product,customer})=>{
   useEffect( ()=>{
       fetch("http://localhost:8080/product/warehouse/"+product.id).then(rez=>rez.json()).then(rezz=>{setWarehouse(rezz)
       });
-  });
+  },[]);
 
   const getHLink=()=>{
    return customer===null ? "/signin": "/details/"+product.id+"/"+customer.id;
@@ -21,7 +21,8 @@ const ProductCard=({product,customer})=>{
   return(
   <div className="shadow-lg p-5 mb-5 bg-white rounded m-5 d-inline-flex">
     <div className="card-body">
-      <h5 className="card-title">{product.brand}</h5>
+    <h5 className="card-title">{product.brand}</h5>
+    <h5 className="card-title">ID: {product.id}</h5>
       <p className="card-text">{product.name}</p>
       <p className="card-text d-inline-flex mr-2">{product.price} $ </p>
       <Link className="btn btn-primary " to={()=> getHLink() }>Order</Link>

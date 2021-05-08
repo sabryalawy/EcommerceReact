@@ -10,15 +10,14 @@ const Profile=({customer})=>{
         fetch('http://localhost:8080/order/customerorders/'+customer.id).then(rez=>rez.json()).then(rezz=>setOrders(rezz))
     });
 
-    const orderCards=()=>{
 
-    }
 
     if(orders===undefined)
         return <h1>please waite</h1>
 
     return(
         <div>
+            <h1 className="text-center">profile</h1>
             <div className="shadow-lg p-5 mb-5 bg-white rounded m-5 ">
                 <div className="card-body">
                 <h5 className="card-title">ID: {customer.id}</h5>
