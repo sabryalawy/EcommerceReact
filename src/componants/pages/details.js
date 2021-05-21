@@ -20,7 +20,7 @@ const Details=({match})=>{
 
     useEffect(async ()=>{
        await getWarehouse();
-        
+        console.log();
         fetch('http://localhost:8080/product/'+match.params.id).then(rez=>rez.json()).then(rezz=>setProduct(rezz)).then(()=>setOrder({
             "warehouse":{"id":warehouse[0].wareHouse},
             "customer":{"id":match.params.cid},
@@ -32,7 +32,7 @@ const Details=({match})=>{
     const handleMakeOrder = ()=>{
         
         ax.post("http://localhost:8080/order", JSON.stringify(order))
-        .then(() => alert('Thank you for subscribing!'))
+        .then(() => alert('Thank you for buying!'))
     }
 
     if(product===null)

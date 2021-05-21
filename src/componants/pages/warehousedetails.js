@@ -6,7 +6,8 @@ const WaerhouseDetails=({match})=>{
     const [products,setProducts] = useState([]);
     
     const getTheProducts=()=>{
-        fetch('http://localhost:8080/warehouse/8').then(rez=>rez.json()).then(rezz=>setWarehouse(rezz))
+        console.log(match);
+        fetch('http://localhost:8080/warehouse/'+match.params.wid).then(rez=>rez.json()).then(rezz=>setWarehouse(rezz))
     };
 
 

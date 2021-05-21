@@ -22,7 +22,7 @@ const AddWarehouse=()=>{
     return (
         <div className="shadow-lg p-5 mb-5 bg-white rounded m-5 ">
             <div className="card-body">
-                <h5 className="card-title">AddProduct</h5>
+                <h5 className="card-title">Add Warehouse</h5>
                 <label>City:</label>
                 <input type="text" className="m-2" id="city" onChange={e=>setCity(e.target.value)}/><br/>             
                 <label>Address:</label>

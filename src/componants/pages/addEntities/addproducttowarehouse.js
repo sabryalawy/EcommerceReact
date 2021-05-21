@@ -8,13 +8,13 @@ const AddProductToWarehouse=()=>{
 
 
     const saveProductToWareHouse=()=>{
-        ax.post('http://localhost:8080/warehouse/addtowarehouse/'+warehouse+'/'+product+'/'+capacity).then(() => alert('Thank you for adding a warehouse!'));
+        ax.post('http://localhost:8080/warehouse/addtowarehouse/'+warehouse+'/'+product+'/'+capacity).then(() => alert('Thank you for adding a product to a warehouse!'));
     }
     
     return (
         <div className="shadow-lg p-5 mb-5 bg-white rounded m-5 ">
         <div className="card-body">
-            <h5 className="card-title">AddProductToWarehouse</h5>
+            <h5 className="card-title">Add Product To Warehouse</h5>
             <label>WareHouse ID:</label>
             <input type="text" className="m-2" id="warehouse" onChange={e=>setWarehouse(e.target.value)}/><br/>             
             <label>Product ID:</label>
