@@ -8,7 +8,17 @@ const AddProductToWarehouse=()=>{
 
 
     const saveProductToWareHouse=()=>{
-        ax.post('http://localhost:8080/warehouse/addtowarehouse/'+warehouse+'/'+product+'/'+capacity).then(() => alert('Thank you for adding a product to a warehouse!'));
+        console.log(warehouse,product);
+        ax.post("https://4mykky7yef.execute-api.eu-central-1.amazonaws.com/ecommerce/BZU13_WarehouseProduct", JSON.stringify({
+            TableName: "BZU13_ecommerce",
+            Item:
+            {
+                wid:warehouse,
+                pid:product,
+                type: "warehouseproduct",
+                date:new Date().toString()
+            }
+        })) .then(() => alert('Thank you for adding product to a warehouse!'))
     }
     
     return (

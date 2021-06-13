@@ -8,7 +8,7 @@ const Product=({customer})=>{
     const [products,setProducts]=useState();
    
     useEffect( () => {
-       fetch("http://localhost:8080/product").then((rez)=>(rez.json()).then(setProducts));
+       fetch("https://rcir625wwg.execute-api.eu-central-1.amazonaws.com/ecommerce/BZU13_Product").then((rez)=>(rez.json()).then(setProducts));
     }, []);
 
 
@@ -18,7 +18,7 @@ const Product=({customer})=>{
         return (
         <div>
             <h1 className="text-center">Products</h1>
-            {products.map((pro)=> <ProductCard key={pro.id} product={pro} customer={customer}/>)
+            {products.map((pro)=> <ProductCard key={pro.ID} product={pro} customer={customer}/>)
             }
 
         </div>);

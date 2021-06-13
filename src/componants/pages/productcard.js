@@ -7,7 +7,7 @@ const ProductCard=({product,customer})=>{
   const [warehouse,setWarehouse]=useState([]);
 
   useEffect( ()=>{
-      fetch("http://localhost:8080/product/warehouse/"+product.id).then(rez=>rez.json()).then(rezz=>{setWarehouse(rezz)
+      fetch("https://4mykky7yef.execute-api.eu-central-1.amazonaws.com/ecommerce/BZU13_WarehouseProduct?pid="+product.ID).then(rez=>rez.json()).then(rezz=>{setWarehouse(rezz)
       });
   },[]);
 
@@ -15,7 +15,7 @@ const ProductCard=({product,customer})=>{
     if (customer!=null&&customer.fName==="admin"&&warehouse!==null) {
       return "warehousedetails/"+warehouse[0].wareHouse;
     }
-   return customer===null ? "/signin": "/details/"+product.id+"/"+customer.id;
+   return customer===null ? "/signin": "/details/"+product.ID+"/"+customer.ID;
   }
 
 
@@ -34,7 +34,7 @@ const ProductCard=({product,customer})=>{
   <div className="shadow-lg p-5 mb-5 bg-white rounded m-5 d-inline-flex">
     <div className="card-body">
     <h5 className="card-title">{product.brand}</h5>
-    <h5 className="card-title">ID: {product.id}</h5>
+    <h5 className="card-title">ID: {product.ID}</h5>
       <p className="card-text">{product.name}</p>
       <p className="card-text d-inline-flex mr-2">{product.price} $ </p>
       {makeOrderBtn()}

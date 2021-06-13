@@ -9,11 +9,17 @@ const AddProduct=()=>{
     const [serial,setSerial]=useState(); 
 
     const saveProduct=()=>{
-        ax.post("http://localhost:8080/product", JSON.stringify({
-            name:name,
-            brand:brand,
-            serial:serial,
-            price:price
+        ax.post("https://rcir625wwg.execute-api.eu-central-1.amazonaws.com/ecommerce/BZU13_Product", JSON.stringify({
+          TableName:"BZU13_ecommerce",
+          Item:
+              {
+                  type:"product",
+                  name:name,
+                  brand:brand,
+                  serial:serial,
+                  price:price,
+                  date:new Date().toString()
+              }
         }))
         .then(() => alert('Thank you product has been added!'))
     };

@@ -7,7 +7,7 @@ const Signin=(props)=>{
     const logout=props.logout;
     if(logout){
         props.changecustomer(null);
-    }//jajajajaj-2
+    }
 
 
     const test=(e)=>{
@@ -23,8 +23,8 @@ const Signin=(props)=>{
             });
         }else{
             var customer;
-            fetch("http://localhost:8080/customer/"+userName).then(rez=>rez.json()).then(rezz=>{
-                customer=rezz;
+            fetch("https://z6vcbb5u44.execute-api.eu-central-1.amazonaws.com/ecommerce/BZU13_Customer?id="+userName+"").then(rez=>rez.json()).then(rezz=>{
+                customer=rezz[0];
                 if (customer.password===password) {
                     props.changecustomer(customer)
                 }

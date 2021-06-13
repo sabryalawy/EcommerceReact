@@ -7,7 +7,7 @@ const WaerhouseDetails=({match})=>{
     
     const getTheProducts=()=>{
         console.log(match);
-        fetch('http://localhost:8080/warehouse/'+match.params.wid).then(rez=>rez.json()).then(rezz=>setWarehouse(rezz))
+        fetch('https://2wgubgo8s2.execute-api.eu-central-1.amazonaws.com/ecommerce/BZU13_Warehouse?id='+match.params.wid).then(rez=>rez.json()).then(rezz=>setWarehouse(rezz[0]))
     };
 
 
